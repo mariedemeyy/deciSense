@@ -1,6 +1,9 @@
 # 261DesignProjectPython
 
-MONDAY, JULY 18, 2022 - AMENA
+MONDAY, JULY 18, 2022 - AMENA, MARIE
+
+Added:
+- Arduino code (version 1.5)
 
 Changes:
 - Fixed a few quick errors (was indexing the wrong value in the data array for % exposures)

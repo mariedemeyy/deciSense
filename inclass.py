@@ -88,7 +88,7 @@ for i in range(classCount):
         runningTime = runningTime + 0.2
 
 
-print("The average time, maximum and minimum dB values per each", timeStats)
+print("The average time, maximum and minimum dB values per each time period", timeStats)
 print("")
 print("The percentage of time in the green zone is",
       (100*int((greenTime)/runningTime)), "%")

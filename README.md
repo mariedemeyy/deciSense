@@ -1,4 +1,4 @@
-# 261DesignProjectPython
+# 261DesignProject
 
 MONDAY, JULY 18, 2022 - AMENA, MARIE
 

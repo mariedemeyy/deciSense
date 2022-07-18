@@ -1,5 +1,4 @@
 import csv
-import numpy as np
 
 data = []
 with open('classvolume.csv') as file:
@@ -17,13 +16,12 @@ print(data[3])  # first amplitude
 print(data[4])  # first db value
 print(data[5])  # second timstamp, etc etc
 
-decibels = []  # ADD DECIBELS TO THIS ARRAY TO MAKE PARSING EASIER
 decibelCount = 0  # total decibel sum for time duration
 maxVal = 0
 minVal = 100
 count = 0  # used for average calculations (dividing by # of db values)
 totalTime = 0  # what we use to iterate (for specific time durations)
-# this is the array used to initialize the avg, max and min db values per time duration
+# used to initialize the avg, max and min db values per time duration
 timeStats = [[] for k in range(int(classCount/300))]
 statsCounter = 0
 greenTime = 0
@@ -38,31 +36,31 @@ ninetyToHundred = 0
 moreThanHundred = 0
 
 for i in range(classCount):
-    # FINDING THE GREEN, YELLOW AND RED % VALUES FOR ALL TIME
 
-    if 80 <= float(''.join(data[3*i + 3])) > 85:
+    # FINDING THE GREEN, YELLOW AND RED % VALUES FOR ALL TIME
+    if 80 <= float(''.join(data[3*i + 4])) > 85:
         greenTime = greenTime + 0.2
-    elif 85 <= float(''.join(data[3*i + 3])) > 95:
+    elif 85 <= float(''.join(data[3*i + 4])) > 95:
         yellowTime = yellowTime + 0.2
-    elif float(''.join(data[3*i + 3])) >= 95:
+    elif float(''.join(data[3*i + 4])) >= 95:
         redTime = redTime + 0.2
-    elif float(''.join(data[3*i + 3])) < 80:
+    elif float(''.join(data[3*i + 4])) < 80:
         safeTime = safeTime + 0.2
 
     # FINDING THE TIME DURATION OF EACH DECIBEL RANGE FOR ALL TIME
-    if float(''.join(data[3*i + 3])) < 70:
+    if float(''.join(data[3*i + 4])) < 70:
         upToSeventy = upToSeventy + 0.2
 
-    elif 70 <= float(''.join(data[3*i + 3])) < 80:
+    elif 70 <= float(''.join(data[3*i + 4])) < 80:
         seventyToEighty = seventyToEighty + 0.2
 
-    elif 80 <= float(''.join(data[3*i + 3])) < 90:
+    elif 80 <= float(''.join(data[3*i + 4])) < 90:
         eightyToNinety = eightyToNinety + 0.2
 
-    elif 90 <= float(''.join(data[3*i + 3])) < 100:
+    elif 90 <= float(''.join(data[3*i + 4])) < 100:
         ninetyToHundred = ninetyToHundred + 0.2
 
-    elif float(''.join(data[3*i + 3])) >= 100:
+    elif float(''.join(data[3*i + 4])) >= 100:
         moreThanHundred = moreThanHundred + 0.2
 
     # FINDING AVERAGE, MAX AND MIN DECIBEL VALUES FOR EACH SET TIME DURATION (60s)
@@ -89,11 +87,8 @@ for i in range(classCount):
         totalTime = totalTime + 0.2
         runningTime = runningTime + 0.2
 
-print("The count is", count)
-print("The average decibel value is", int(decibelCount/count))
-print("The max decibel value is", maxVal)
-print("The min decibel value is", minVal)
-print(timeStats)
+
+print("The average time, maximum and minimum dB values per each", timeStats)
 print("")
 print("The percentage of time in the green zone is",
       (100*int((greenTime)/runningTime)), "%")
@@ -110,6 +105,12 @@ print("The time spent in the 80 - 90 dB range is", int(eightyToNinety), "s")
 print("The time spent in the 90 - 100 dB range is", int(ninetyToHundred), "s")
 print("The time spent in the 100 dB + range is", int(moreThanHundred), "s")
 
+# CHECKS FOR PROLONGED EXPOSURE AND ALERTS USER IF THERE IS A WARNING
+# for the purposes of testing, the alert exposure time is 60s
+if int(eightyToNinety + ninetyToHundred + moreThanHundred) >= 60:
+    print("WARNING: You've just been exposed to 80+ db levels for", int(eightyToNinety +
+          ninetyToHundred + moreThanHundred), "s. Seek hearing protection now!")
+
 # green 80 - 84
 # yellow 85 - 94
 # red 95+
@@ -120,16 +121,3 @@ print("The time spent in the 100 dB + range is", int(moreThanHundred), "s")
 # 3. Percentages of time duration composed of green, yellow and red-level sound exposures (pie chat - percentages)
 # 4. Find the time per decibel value (or maybe easier, find the total time per range ie. time for 70-80 db, 80-90 db etc) - sampling rate is 200 ms
 # 5. Elapsed time
-
-
-# decibels = []
-# i = 4
-# while i < len(data):
-# print(data[i])
-# intDecibel = int(data[i])
-# print(intDecibel)
-# decibels.append(int(data[i]))
-# i += 3
-
-# for element in decibels:
-# print(element)

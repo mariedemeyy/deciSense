@@ -1,20 +1,8 @@
 import csv
+from turtle import color
 
 import matplotlib.font_manager
 import matplotlib.pyplot as plt
-from matplotlib import font_manager as fm, rcParams
-
-# fpath = os.path.join(rcParams['datapath'], r"C:\Users\Jac\Documents\github\261DesignProject")
-# prop = fm.FontProperties(fname=fpath)
-# matplotlib.font_manager.FontManager.addfont('work_sans_font.ttf')
-# matplotlib.font_manager.findSystemFonts(fontpaths=None, fontext="ttf")
-# font_dirs = ['work_sans_font.ttf']
-# font_files = font_manager.findSystemFonts(fontpaths=font_dirs)
-#
-# for font_file in font_files:
-#     font_manager.fontManager.addfont(font_file)
-#
-# plt.rcParams['font.family'] = 'Work Serif'
 
 data = []
 with open('dataset_2.csv') as file:
@@ -82,8 +70,6 @@ for i in range(classCount):
 
     # FINDING AVERAGE, MAX AND MIN DECIBEL VALUES FOR EACH SET TIME DURATION (60s)
     if totalTime >= 60:
-        timeStats[statsCounter].append(
-            [int((decibelCount/60)), int(maxVal), int(minVal)])
         avgValues.append(int((decibelCount/60)))
         maxValues.append(int(maxVal))
         minValues.append(int(minVal))
@@ -108,8 +94,10 @@ for i in range(classCount):
         totalTime = totalTime + 1
         runningTime = runningTime + 1
 
-print(len(timeStats))
-print("The average time, maximum and minimum dB values per each time period:", timeStats)
+print("The average time values per each time period: ", avgValues)
+print("The maximum dB values per each time period: ", maxValues)
+print("The minimum dB values per each time period: ", minValues)
+
 print("")
 print("The percentage of unharmful hearing is",
       (int(100*((safeTime)/runningTime))), "%")
@@ -141,8 +129,12 @@ if int(eightyToNinety + ninetyToHundred + moreThanHundred) >= 60:
 # 4. Find the time per decibel value (or maybe easier, find the total time per range ie. time for 70-80 db, 80-90 db etc) - sampling rate is 200 ms
 # 5. Elapsed time
 
-str_time_stats = "The average time, maximum and minimum dB values per each time period: " + \
-    str(timeStats) + "\n"
+str_avg_stats = "The average time values per each time period: " + \
+    str(avgValues) + "\n"
+str_max_stats = "The maximum dB values per each time period: " + \
+    str(maxValues) + "\n"
+str_min_stats = "The minimum dB values per each time period: " + \
+    str(minValues) + "\n"
 str_unharmful_time = "The percentage of unharmful noise is " + \
     str(int(100*((safeTime)/runningTime))) + "%\n"
 str_green_time = "The percentage of time in the green zone is " + \
@@ -165,43 +157,32 @@ str_warning = "WARNING: You've been exposed to 80+ db levels for " + \
     str(int(eightyToNinety + ninetyToHundred + moreThanHundred)) + \
     "s. Seek hearing protection now!\n"
 
-# PLOT DB-TIME PLOTS
-
-
 # PLOT PERCENT BREAKDOWN
-# pie_data = [int(100*((greenTime)/runningTime)), int(100 * ((yellowTime)/runningTime)),
-#             int(100*((redTime)/runningTime)), int(100*((safeTime)/runningTime))]
-# pie_labels = ["GREEN ZONE", "YELLOW ZONE", "RED ZONE", "SAFE ZONE"]
-# pie_colours = ["green", "yellow", "red", "grey"]
-# figure = plt.figure(figsize=(10, 7))
-# plt.pie(pie_data, labels=pie_labels, colors=pie_colours)
-# plt.title("Daily Exposure Level Breakdown")
-# plt.show()
+pie_data = [int(100*((greenTime)/runningTime)), int(100 * ((yellowTime)/runningTime)),
+            int(100*((redTime)/runningTime)), int(100*((safeTime)/runningTime))]
+pie_labels = ["GREEN ZONE", "YELLOW ZONE", "RED ZONE", "SAFE ZONE"]
+pie_colours = ["#357305", "#E8AD17", "#BF0606", "#AFB1B6"]
+#figure = plt.figure(figsize=(10, 7))
+plt.pie(pie_data, labels=pie_labels, colors=pie_colours)
+plt.title("Daily Exposure Level Breakdown")
+plt.show()
 
 # PLOT RANGE BREAKDOWN
-# plt.plot(minValues, 'go-', label='Min')
-# plt.plot(maxValues, 'ro-', label='Max')
-# plt.plot(avgValues, 'bo-', label='Avg')
-# plt.xlabel('Time (min)', fontproperties=prop)
-# plt.ylabel('Sound Level (dB)', fontproperties=prop)
-# plt.title('Daily Exposure Level Ranges', fontproperties=prop)
-# plt.legend(loc='lower right', fontproperties=prop)
-# plt.show()
-
-# PLOT RANGE BREAKDOWN
-# plt.plot(minValues, 'go-', label='Min')
-# plt.plot(maxValues, 'ro-', label='Max')
-# plt.plot(avgValues, 'bo-', label='Avg')
-# plt.xlabel('Time (min)', fontname=work_sans)
-# plt.ylabel('Sound Level (dB)', fontname=work_sans)
-# plt.title('Daily Exposure Level Ranges', fontname=work_sans)
-# plt.legend(loc='lower right', fontname=work_sans)
-# plt.show()
+plt.plot(minValues, 'o-', label='Min', color="#357305")
+plt.plot(maxValues, 'o-', label='Max', color="#BF0606")
+plt.plot(avgValues, 'o-', label='Avg', color="#E8AD17")
+plt.xlabel('Time (min)')
+plt.ylabel('Sound Level (dB)')
+plt.title('Daily Exposure Level Ranges')
+plt.legend(loc='lower right')
+plt.show()
 
 # WRITE THE ANALYTICS DATA TO A TXT FILE
 fh = open('analytics_report.txt', 'w')
 fh.write("DAILY ANALYTICS REPORT\n")
-fh.write(str_time_stats)
+fh.write(str_avg_stats)
+fh.write(str_max_stats)
+fh.write(str_min_stats)
 fh.write("\n")
 fh.write(str_unharmful_time)
 fh.write(str_green_time)

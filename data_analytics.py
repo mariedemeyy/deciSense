@@ -1,4 +1,5 @@
 import csv
+import matplotlib.pyplot as plt
 
 data = []
 with open('dataset_2.csv') as file:
@@ -85,6 +86,7 @@ for i in range(classCount):
         totalTime = totalTime + 1
         runningTime = runningTime + 1
 
+print(len(timeStats))
 print("The average time, maximum and minimum dB values per each time period:", timeStats)
 print("")
 print("The percentage of unharmful hearing is",
@@ -127,7 +129,6 @@ str_yellow_time = "The percentage of time in the yellow zone is " + \
     str(int(100*((yellowTime)/runningTime))) + "%\n"
 str_red_time = "The percentage of time in the red zone is " + \
     str(int(100*((redTime)/runningTime))) + "%\n"
-
 str_upto_seventy = "The time spent in the range up to 70 dB is " + \
     str(int(upToSeventy)) + "s\n"
 str_seventy_eighty = "The time spent in the 70 - 80 dB range is " + \
@@ -143,8 +144,19 @@ str_warning = "WARNING: You've been exposed to 80+ db levels for " + \
     "s. Seek hearing protection now!\n"
 
 
-fh = open('analytics_report.txt', 'w')
+# PLOT PERCENT BREAKDOWN
+# pie_data = [int(100*((greenTime)/runningTime)), int(100 * ((yellowTime)/runningTime)),
+#             int(100*((redTime)/runningTime)), int(100*((safeTime)/runningTime))]
+# pie_labels = ["GREEN ZONE", "YELLOW ZONE", "RED ZONE", "SAFE ZONE"]
+# pie_colours = ["green", "yellow", "red", "grey"]
+# figure = plt.figure(figsize=(10, 7))
+# plt.pie(pie_data, labels=pie_labels, colors=pie_colours)
+# plt.title("Daily Exposure Level Breakdown")
+# plt.show()
 
+
+# WRITE THE ANALYTICS DATA TO A TXT FILE
+fh = open('analytics_report.txt', 'w')
 fh.write("DAILY ANALYTICS REPORT\n")
 fh.write(str_time_stats)
 fh.write("\n")
@@ -162,23 +174,3 @@ fh.write("\n")
 if int(eightyToNinety + ninetyToHundred + moreThanHundred) >= 60:
     fh.write(str_warning)
 fh.close()
-
-# with open('analytics_report.txt', 'w') as file:
-#     write = csv.writer(file)
-
-#     write.writerow(str_time_stats)
-#     write.writerow("")
-#     write.writerow(str_unharmful_time)
-#     write.writerow(str_green_time)
-#     write.writerow(str_yellow_time)
-#     write.writerow(str_red_time)
-#     write.writerow("")
-#     write.writerow(str_upto_seventy)
-#     write.writerow(str_seventy_eighty)
-#     write.writerow(str_eighty_ninety)
-#     write.writerow(str_ninety_hundred)
-#     write.writerow(str_hundred_plus)
-#     write.writerow("")
-
-#     if int(eightyToNinety + ninetyToHundred + moreThanHundred) >= 60:
-#         write.writerow(str_warning)

@@ -1,6 +1,10 @@
-# 261DesignProjectPython
+# 261DesignProject
 
-MONDAY, JULY 18, 2022 - AMENA
+MONDAY, JULY 18, 2022 - AMENA, MARIE
+
+Added:
+- Arduino code (version 1.5)
+
 Changes:
 - Fixed a few quick errors (was indexing the wrong value in the data array for % exposures)
 - Added code to alert the user for long term exposures. For the scope of our project, since we can't collect data for hours, we are using a "day's" worth of data to be 5 - 10 min. Each "hour" will be 60s. So in our case, long-term exposures would be for 60s+

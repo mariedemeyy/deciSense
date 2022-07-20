@@ -1,0 +1,15 @@
+DAILY ANALYTICS REPORT
+The average time, maximum and minimum dB values per each time period: [[[33, 81, 0]], [[30, 43, 0]], [[42, 51, 0]], [[44, 51, 43]], [[55, 60, 43]], [[55, 69, 51]], [[68, 78, 55]], [[68, 70, 64]], [[81, 87, 65]], [[83, 86, 82]], [[91, 95, 88]], [[88, 95, 88]], [[100, 101, 94]], [[101, 102, 98]]]
+
+The percentage of unharmful noise is 57%
+The percentage of time in the green zone is 11%
+The percentage of time in the yellow zone is 16%
+The percentage of time in the red zone is 16%
+
+The time spent in the range up to 70 dB is 471s
+The time spent in the 70 - 80 dB range is 26s
+The time spent in the 80 - 90 dB range is 175s
+The time spent in the 90 - 100 dB range is 95s
+The time spent in the 100 dB + range is 112s
+
+WARNING: You've been exposed to 80+ db levels for 382s. Seek hearing protection now!

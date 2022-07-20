@@ -1,5 +1,20 @@
 import csv
+
+import matplotlib.font_manager
 import matplotlib.pyplot as plt
+from matplotlib import font_manager as fm, rcParams
+
+# fpath = os.path.join(rcParams['datapath'], r"C:\Users\Jac\Documents\github\261DesignProject")
+# prop = fm.FontProperties(fname=fpath)
+# matplotlib.font_manager.FontManager.addfont('work_sans_font.ttf')
+# matplotlib.font_manager.findSystemFonts(fontpaths=None, fontext="ttf")
+# font_dirs = ['work_sans_font.ttf']
+# font_files = font_manager.findSystemFonts(fontpaths=font_dirs)
+#
+# for font_file in font_files:
+#     font_manager.fontManager.addfont(font_file)
+#
+# plt.rcParams['font.family'] = 'Work Serif'
 
 data = []
 with open('dataset_2.csv') as file:
@@ -163,6 +178,25 @@ str_warning = "WARNING: You've been exposed to 80+ db levels for " + \
 # plt.title("Daily Exposure Level Breakdown")
 # plt.show()
 
+# PLOT RANGE BREAKDOWN
+# plt.plot(minValues, 'go-', label='Min')
+# plt.plot(maxValues, 'ro-', label='Max')
+# plt.plot(avgValues, 'bo-', label='Avg')
+# plt.xlabel('Time (min)', fontproperties=prop)
+# plt.ylabel('Sound Level (dB)', fontproperties=prop)
+# plt.title('Daily Exposure Level Ranges', fontproperties=prop)
+# plt.legend(loc='lower right', fontproperties=prop)
+# plt.show()
+
+# PLOT RANGE BREAKDOWN
+# plt.plot(minValues, 'go-', label='Min')
+# plt.plot(maxValues, 'ro-', label='Max')
+# plt.plot(avgValues, 'bo-', label='Avg')
+# plt.xlabel('Time (min)', fontname=work_sans)
+# plt.ylabel('Sound Level (dB)', fontname=work_sans)
+# plt.title('Daily Exposure Level Ranges', fontname=work_sans)
+# plt.legend(loc='lower right', fontname=work_sans)
+# plt.show()
 
 # WRITE THE ANALYTICS DATA TO A TXT FILE
 fh = open('analytics_report.txt', 'w')

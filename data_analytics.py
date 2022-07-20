@@ -22,6 +22,9 @@ count = 0  # used for average calculations (dividing by # of db values)
 totalTime = 0  # what we use to iterate (for specific time durations)
 # used to initialize the avg, max and min db values per time duration
 timeStats = [[] for k in range(int(classCount/60))]
+avgValues = []
+maxValues = []
+minValues = []
 statsCounter = 0
 greenTime = 0
 yellowTime = 0
@@ -66,6 +69,10 @@ for i in range(classCount):
     if totalTime >= 60:
         timeStats[statsCounter].append(
             [int((decibelCount/60)), int(maxVal), int(minVal)])
+        avgValues.append(int((decibelCount/60)))
+        maxValues.append(int(maxVal))
+        minValues.append(int(minVal))
+
         statsCounter = statsCounter + 1
 
         maxVal = 0
@@ -142,6 +149,8 @@ str_hundred_plus = "The time spent in the 100 dB + range is " + \
 str_warning = "WARNING: You've been exposed to 80+ db levels for " + \
     str(int(eightyToNinety + ninetyToHundred + moreThanHundred)) + \
     "s. Seek hearing protection now!\n"
+
+# PLOT DB-TIME PLOTS
 
 
 # PLOT PERCENT BREAKDOWN

@@ -1,4 +1,18 @@
-# 261DesignProject
+# 261 Design Project Updates
+
+WEDNESDAY, JULY 20, 2022 - AMENA, JACQUELINE
+
+Added:
+- A new data file to test our device against (dataset_2.csv)
+- Analytics Report (data_analytics.txt) that outputs our data analytics to the user (the file is overwritten every time .py file is run)
+
+Changes:
+- Made a final iteration of Python code (before design presentation)
+- Wrote the output to a txt file (realized that csv had too many commas and was hard to read)
+- Added code to plot the pie chart and line graphs
+- Cleaned up code to make it more readable
+
+_________________________________________________________________
 
 MONDAY, JULY 18, 2022 - AMENA, MARIE
 

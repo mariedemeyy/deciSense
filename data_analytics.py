@@ -9,7 +9,6 @@ with open('dataset_2.csv') as file:
 
 # subtractig 2 from len(data) since first 2 lines are titles, dividing by 3 since the bulk of the data is divided into 3 classes
 classCount = int(((len(data) - 2)/3))
-
 decibelCount = 0  # total decibel sum for time duration
 maxVal = 0
 minVal = 100

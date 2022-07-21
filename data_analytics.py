@@ -91,28 +91,6 @@ for i in range(classCount):
         totalTime = totalTime + 1
         runningTime = runningTime + 1
 
-print("The average time values per each time period: ", avgValues)
-print("The maximum dB values per each time period: ", maxValues)
-print("The minimum dB values per each time period: ", minValues)
-
-print("")
-print("The percentage of unharmful hearing is",
-      (int(100*((safeTime)/runningTime))), "%")
-print("The percentage of time in the green zone is",
-      (int(100*(greenTime)/runningTime)), "%")
-print("The percentage of time in the yellow zone is",
-      (int(100*((yellowTime)/runningTime))), "%")
-print("The percentage of time in the red zone is",
-      (int(100*((redTime)/runningTime))), "%")
-
-print("")
-print("The time spent in the range up to 70 dB is", int(upToSeventy), "s")
-print("The time spent in the 70 - 80 dB range is", int(seventyToEighty), "s")
-print("The time spent in the 80 - 90 dB range is", int(eightyToNinety), "s")
-print("The time spent in the 90 - 100 dB range is", int(ninetyToHundred), "s")
-print("The time spent in the 100 dB + range is", int(moreThanHundred), "s")
-print("")
-
 # CHECKS FOR PROLONGED EXPOSURE AND ALERTS USER IF THERE IS A WARNING
 # for the purposes of testing, the alert exposure time is 60s
 if int(eightyToNinety + ninetyToHundred + moreThanHundred) >= 60:

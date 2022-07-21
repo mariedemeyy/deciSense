@@ -1,4 +1,4 @@
-# 261DesignProject
+# 261 Design Project Updates
 
 WEDNESDAY, JULY 20, 2022 - AMENA, JACQUELINE
 

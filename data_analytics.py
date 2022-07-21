@@ -1,7 +1,4 @@
 import csv
-from turtle import color
-
-import matplotlib.font_manager
 import matplotlib.pyplot as plt
 
 data = []
@@ -13,18 +10,11 @@ with open('dataset_2.csv') as file:
 # subtractig 2 from len(data) since first 2 lines are titles, dividing by 3 since the bulk of the data is divided into 3 classes
 classCount = int(((len(data) - 2)/3))
 
-print(data[0])  # scrap this
-print(data[1])  # first timestamp
-print(data[2])  # first amplitude
-print(data[3])  # first db value
-
 decibelCount = 0  # total decibel sum for time duration
 maxVal = 0
 minVal = 100
 count = 0  # used for average calculations (dividing by # of db values)
 totalTime = 0  # what we use to iterate (for specific time durations)
-# used to initialize the avg, max and min db values per time duration
-timeStats = [[] for k in range(int(classCount/60))]
 avgValues = []
 maxValues = []
 minValues = []
@@ -39,6 +29,13 @@ seventyToEighty = 0
 eightyToNinety = 0
 ninetyToHundred = 0
 moreThanHundred = 0
+
+# NEED TO PARSE:
+# 1. Average db per hour duration (use the timestamp for displays stats per hour, day etc)
+# 2. Max and min db values per time duration
+# 3. Percentages of time duration composed of green, yellow and red-level sound exposures (pie chat - percentages)
+# 4. Find the time per decibel value (or maybe easier, find the total time per range ie. time for 70-80 db, 80-90 db etc) - sampling rate is 200 ms
+# 5. Elapsed time
 
 for i in range(classCount):
 
@@ -121,13 +118,6 @@ print("")
 if int(eightyToNinety + ninetyToHundred + moreThanHundred) >= 60:
     print("WARNING: You've been exposed to 80+ db levels for", int(eightyToNinety +
           ninetyToHundred + moreThanHundred), "s. Seek hearing protection now!")
-
-# NEED TO PARSE:
-# 1. Average db per hour duration (use the timestamp for displays stats per hour, day etc)
-# 2. Max and min db values per time duration
-# 3. Percentages of time duration composed of green, yellow and red-level sound exposures (pie chat - percentages)
-# 4. Find the time per decibel value (or maybe easier, find the total time per range ie. time for 70-80 db, 80-90 db etc) - sampling rate is 200 ms
-# 5. Elapsed time
 
 str_avg_stats = "The average time values per each time period: " + \
     str(avgValues) + "\n"

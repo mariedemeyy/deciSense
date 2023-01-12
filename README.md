@@ -1,5 +1,9 @@
 # deciSense Project Updates
+END OF TERM - ALL
+- Presented our final design using [these slides](https://drive.google.com/file/d/1XMobV22GMb4IKy6ZXzUQFU8urIk6rVQF/view?usp=sharing)
+- Uploaded [Youtube video](https://www.youtube.com/watch?v=Iyj9ROaRIa4&t=4s) showcasing deciSense :) Feel free to watch!
 
+_________________________________________________________________
 WEDNESDAY, JULY 20, 2022 - AMENA, JACQUELINE
 
 Added:

@@ -37,7 +37,6 @@ moreThanHundred = 0
 # 5. Elapsed time
 
 for i in range(classCount):
-
     # FINDING THE GREEN, YELLOW AND RED % VALUES FOR ALL TIME
     if 80 <= float(''.join(data[3*i + 3])) < 85:
         greenTime = greenTime + 1
